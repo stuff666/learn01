@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>TODO supply a title</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="css/style.css" rel="stylesheet" type="text/css"/>
+		<link href="js/jquery-ui.css" rel="stylesheet" type="text/css"/>
+		<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+		<script src="js/jquery-ui.min.js" type="text/javascript"></script>
+		<script>
+			$(document).ready(function () {
+
+				$('#btn_resize').click(function () {
+					var image = $('#image');
+					image.css('max-height', 400);
+					image.css('max-width', 400);
+
+					return false;
+				});
+
+				function refreshSwatch() {
+					var zoom = $("#zoom").slider("value");
+					var image = $('#image');
+					image.css('max-height', zoom);
+					image.css('max-width', zoom);
+				}
+
+				$(function () {
+					$("#zoom").slider({
+						orientation: "horizontal",
+						range: "min",
+						max: 900,
+						value: 300,
+						slide: refreshSwatch,
+						change: refreshSwatch
+					});
+					$("#zoom").slider("value", 300);
+				});
+
+
+			});
+		</script>
+	</head>
+	<body>
+		<div>TODO write content</div>
+
+		<div id="image_div">
+			<img id="image" src="img/linux.png" alt="Linux wallpaper"/>
+		</div>
+		<div id="buttons">
+			<div id="zoom"></div>
+			<a id="btn_resize" href="#">resize</a>
+		</div>
+
+		<div>TODO write content</div>
+	</body>
+</html>
